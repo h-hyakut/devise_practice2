@@ -1,0 +1,7 @@
+<h1>My page</h1>
+<h2>This is My page.</h2>
+
+
+<p> Your mail adress is "<%= current_user.email %>"</p>
+<p> Your name  is "<%= current_user.name %>"</p>
+<p><%= link_to "log out", destroy_user_session_path, data: { turbo_method: :delete } %></p>
