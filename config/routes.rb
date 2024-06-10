@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   get :top, to: "top#index"
   get :mypage, to: "mypage#index"
-  # resources :users
+
+  root "users#index"
+  resources :users
   # get 'users/show'
   # get 'users/edit'
   # get 'users/index'

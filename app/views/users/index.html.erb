@@ -1,0 +1,24 @@
+<h2>ユーザー 一覧</h2>
+
+<table>
+  <thread>
+    <tr>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th colspam="2"></th>
+    </tr>
+  </thread>
+
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>👤 <%= link_to user.name, user_path(user) %></td>
+        <td>✉ <%= link_to user.email, user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "トップページへ", top_path %></p>
+
