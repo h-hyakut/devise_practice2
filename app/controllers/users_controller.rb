@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
     @users = User.all
   end
-  
-  def new
-    @user = User.new
-  end
+
 
   def show 
     @user = User.find(params[:id])
+
+    if @user == current_user
+      redirect_to mypage_path
+    else
+    end
   end
     
   def edit
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
   def update
     
     if @user.update(user_params)
-      redirect_to users_path, notice: "編集が完了しました。"
+      redirect_to mypage_path, notice: "編集が完了しました。"
     else
       render :edit
     end
@@ -43,10 +45,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:content)
+    params.require(:user).permit(:name, :email)
   end
   def set_user
-    @user = user.find(params[:id]) #update > add
+    @user = User.find(params[:id]) #update > add
   end
 end
 

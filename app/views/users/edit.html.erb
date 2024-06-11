@@ -1,2 +1,32 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>編集</h1>
+
+<%= form_with(model: @user, url: user_path, local: true) do |form| %> 
+  <% if @user.errors.any? %>
+  <div id= "error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field>
+    <%= form.label :name, "👤" %>
+    <%= form.text_area :name %>
+  </div>
+
+
+  <div class="field">
+    <p><%= form.label :email, "✉" %></p>
+    <p><%= form.text_field :email %></p>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "更新する" %>
+  </div>
+<% end %>
+
+<p><%= button_to 'ユーザー 一覧に戻る', users_path, method: :get %></p>
