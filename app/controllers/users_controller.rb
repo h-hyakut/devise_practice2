@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def show 
     @user = User.find(params[:id])
-
     if @user == current_user
       redirect_to mypage_path
     else
@@ -16,7 +15,7 @@ class UsersController < ApplicationController
   end
     
   def edit
-      # @user = User.find(params[:id])
+      @user = User.find(params[:id])
   end
 
   def create
@@ -30,7 +29,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    
     if @user.update(user_params)
       redirect_to mypage_path, notice: "編集が完了しました。"
     else

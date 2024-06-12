@@ -3,7 +3,13 @@
 
 
 <p> あなたの名前は " <%= current_user.name %> "です。</p>
-<p> あなたのメールアドレスは " <%= current_user.email %> "です。</p>
+<p> あなたのメールアドレスは " <%= current_user.email %> "です。</p
+<p> 投稿📚 </p>
+<% current_user.posts.each do |post| %>
+  <p><%= post.content %> </p>
+<% end %>
+
 <p><%= button_to "編集", edit_user_path(current_user), method: :get %></p>
-<p><%= button_to "ユーザー 一覧へ", users_path, method: :get%></p>
+<p><%= button_to "新規投稿", new_post_path, method: :get %></p>
+<p><%= link_to "ユーザー 一覧へ", users_path %></p>
 <p><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %></p>

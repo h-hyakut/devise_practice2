@@ -1,4 +1,7 @@
 <h2>ユーザー詳細</h2>
-<p>👤：<%= @user.name %></p>
-<p>✉：<%= @user.email %></p>
-<%= button_to "ユーザー 一覧へ", users_path %>
+  <p>👤：<%= @user.name %></p>
+  <p>✉：<%= @user.email %></p>
+  <p>📚：<% @user.posts.each do |post| %>
+    <%= post.content %></p>
+  <% end %>
+<%= button_to "ユーザー 一覧へ", users_path, method: :get %>

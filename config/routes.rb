@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root "users#index"
   resources :users, only: [:index, :show, :edit, :update, :destroy]
+  resources :posts
   # get 'users/show'
   # get 'users/edit'
   # get 'users/index'
